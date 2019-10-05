@@ -29,7 +29,7 @@ public class SQSMessageListener implements MessageListener {
             TextMessage txtMessage = (TextMessage)message;
             email.setText(txtMessage.getText());
             ses.sendEmail(email);
-            logger.info("Content: " + txtMessage.getText());
+            logger.info(">>>>>>>>>>>>>>>>>>>>>>>Content: " + txtMessage.getText());
         }
         else if (message instanceof BytesMessage){
             BytesMessage byteMessage = (BytesMessage)message;
@@ -37,13 +37,13 @@ public class SQSMessageListener implements MessageListener {
             byteMessage.readBytes(bytes);
             email.setText(Base64.encodeAsString(bytes));
             ses.sendEmail(email);
-            logger.info("Content: " +  Base64.encodeAsString(bytes));
+            logger.info(">>>>>>>>>>>>>>>>>>>>>>>Content: " +  Base64.encodeAsString(bytes));
         }
         else if (message instanceof ObjectMessage) {
             ObjectMessage objMessage = (ObjectMessage) message;
             email.setText(objMessage.getObject().toString());
             ses.sendEmail(email);
-            logger.info("Content: " + objMessage.getObject());
+            logger.info(">>>>>>>>>>>>>>>>>>>>>>>Content: " + objMessage.getObject());
         }
     }
 }

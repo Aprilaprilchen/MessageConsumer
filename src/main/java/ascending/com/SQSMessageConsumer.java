@@ -19,7 +19,8 @@ public class SQSMessageConsumer {
 
     public static void main(String[] args) throws JMSException, IOException, InterruptedException {
         logger.info("The message consumer is listening... press ENTER to exit the application.");
-        // Create the connection factory
+        // Create the connection factory, connect with AWS SQS.
+        // Configuration message in VM option. Pass credential chain here.
         SQSConnectionFactory connectionFactory = new SQSConnectionFactory(new ProviderConfiguration(),
                 AmazonSQSClientBuilder.standard()
                         .withCredentials(new DefaultAWSCredentialsProviderChain())
